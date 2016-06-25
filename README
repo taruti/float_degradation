@@ -1,0 +1,18 @@
+This is a small self contained example of Go 1.7beta2 producing slower code than 1.6.2 on linux amd64 in an edge case.
+
+$ go version
+go version go1.6.2 linux/amd64
+$ go test -test.bench=. 
+testing: warning: no tests to run
+PASS
+BenchmarkOptimize16-2	      50	  33350759 ns/op
+ok  	github.com/taruti/fltmarkov/float_degradation	1.710s
+$ GOROOT=/tmp/go /tmp/go/bin/go version
+go version go1.7beta2 linux/amd64
+$ GOROOT=/tmp/go /tmp/go/bin/go test -test.bench=.
+testing: warning: no tests to run
+BenchmarkOptimize16-2   	      30	  41881693 ns/op
+PASS
+ok  	github.com/taruti/fltmarkov/float_degradation	1.309s
+
+The slowdown of 25% is very unusual - usually 1.7 is much faster.
