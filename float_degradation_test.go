@@ -70,7 +70,6 @@ outer:
 				nzero++
 			}
 		}
-		_ = pmaxi
 		if nzero < 2 {
 			break
 		}
